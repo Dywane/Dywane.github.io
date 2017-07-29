@@ -66,7 +66,7 @@ tableViewController也可以作为child view controller添加到其他的viewCon
 ### 消除ModelObeject和Cell之间的隔阂
 在很多情况下，我们需要提交我们想要在view层展示的数据，同时我们也行维持view层和model层的分离，所以tableView中的`dateSource`常常做了超额的工作：
 
-```objecitve_c
+{% highlight objc %}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -76,11 +76,11 @@ tableViewController也可以作为child view controller添加到其他的viewCon
     UIImage *photo = [UIImage imageWithName:text];
     cell.photoView.image = photo;
 }
-```
+{% endhighlight %}
 
 这样`dataSorce`会变得很杂乱，应该将这些东西分到cell的category中。
 
-{% highlight c %}
+{% highlight objc %}
 @implementation Cell (ConfigText)
 
 -(void)configCellWithTitle:(NSString *)title
@@ -94,7 +94,7 @@ tableViewController也可以作为child view controller添加到其他的viewCon
 
 这样的话`dataSource`将会变得十分简单。
 
-{% highlight c %}
+{% highlight objc %}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -109,7 +109,7 @@ tableViewController也可以作为child view controller添加到其他的viewCon
 ### 在cell中处理cell状态
 如果想要对tableView的行为进行设置，如选中操作后改变高光状态等，可以在tableViewController中使用委托方法：
 
-{% highlight c %}
+{% highlight objc %}
 -(void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Cell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -125,7 +125,7 @@ tableViewController也可以作为child view controller添加到其他的viewCon
 
 然而当想要换出这些cell或者想要重新设计的时候，仍然需要适应委托方法。cell里面的detail的实现和委托方法中对detail的实现交织在一起，所以应该将这些逻辑移到cell里面：
 
-{% highlight c %}
+{% highlight objc %}
 @implementation Cell
 //...
 -(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
@@ -147,7 +147,7 @@ tableViewController也可以作为child view controller添加到其他的viewCon
 ### 处理不同的cell类型
 如果在一个tableView中有不同的cell类型，`dataSource`将会变得膨胀而难以操作，在下面的代码中，有两个不同的cell类型，一个负责展示图片和标题，另一个负责展示星标。为了分离处理不同的cell的代码，`dataSource`方法只是仅仅执行不同cell自己的设置方法。
 
-{% highlight c %}
+{% highlight objc %}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BOOL isStarRank = self.keys[(NSUInteger)indexPath.row];

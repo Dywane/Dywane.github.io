@@ -21,7 +21,7 @@ comments: false
 ### 将弱业务逻辑移到Model中
 首先是代码，以下的代码是帮助用户查找优先事项的列表：
 
-```objective_c
+{% highlight objective_c %}
 -(void)loadPriorities
 {
 	NSDate *now = [NSDate date];
@@ -30,18 +30,18 @@ comments: false
 	NSSet *priorities = [self.user.priorities filteredSetUsingPredicate:predicate];
 	self.priorities = [priorities allObjects];
 }
-```
+{% endhighlight %}
 然而，如果把这些代码移动到`User`类中会让它变得更加明晰，这时`ViewController.m`中会是：
 
-```objectivec
+{% highlight objective_c %}
 -(void)loadPriorities
 {
 	self.priorities = [self.user currentPriorities];
 }
-```
+{% endhighlight %}
 而`User + Extensions.m`中则是：
 
-```objectivec
+{% highlight objective_c %}
 -(NSArray *)currentPriorities
 {
 	NSDate *now = [NSDate date];
@@ -49,14 +49,15 @@ comments: false
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:formatString, now, now];
 	return [[self.priorities filteredSetUsingPredicate:predicate] allObjects];
 }
-```
+{% endhighlight %}
+
 将这些代码移动的根本原因是因为`ViewController.m`是大部分业务逻辑的载体，本身代码的复杂度已经很高，所以这类跟业务关联不大的代码比如日期转换、图像裁剪、设定过滤器等的操作可以分离到各自的类中完成，一方面为viewController减负，另一方面也能增进代码的复用。
 >关于这个标题的翻译我斟酌了比较久的时间，因为在原文中是**“Move Domain Logic into the Model”**，意为“把**领域逻辑**移到Model中”。对于**“领域逻辑”**一词我进行过考究，大致意思为**“稳定的、不会改变的逻辑关系”**，同时在原文中也是使用了`NSPredicate`作为例子引用，而我认为其例子中的代码也是与业务相关的，只不过关联性不大，而且不会轻易改动，所以使用了**“弱业务逻辑”**一词代替了**“领域逻辑”**一词。
 
 ### 把数据处理的逻辑移到服务层
 一些代码可能没办法很有效的移动到model中，然而这些代码却和model中的代码有清晰的关联，对于这种问题，可以使用`Store`。比如在下面的代码中，viewController需要完成从一个文件中获取一些数据，并对其进行操作：
 
-```objectivec
+{% highlight objective_c %}
 -(void)readArchive 
 {
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
@@ -67,7 +68,7 @@ comments: false
     _photos = [unarchiver decodeObjectOfClass:[NSArray class] forKey:@"photos"];
     [unarchiver finishDecoding];
 }
-```
+{% endhighlight %}
 事实上，view controller不需要清楚怎么实现这些东西，而应该将这些处理交给一个`store object`来完成。
 
 通过对代码进行分离，能够增进代码复用、对代码进行单元测试、保持view controller整洁等。同时能够让view controller更多关注于业务本身的内容，把数据的读取 、缓存、新建等操作交给服务层来处理。
