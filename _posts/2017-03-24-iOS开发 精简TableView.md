@@ -23,7 +23,7 @@ table view controllers可以读取table view的数据、设置tabvleView的编�
 tableViewController也可以作为child view controller添加到其他的viewController中，然后tableViewController会继续管理tableView，而parentViewController能管理其他我们关心的东西。
 
 
-{% highlight c %}
+{% highlight Objective-C %}
     -(void)addDetailTableView
     {
 	    DetailViewController *detail = [DetailViewController new];
