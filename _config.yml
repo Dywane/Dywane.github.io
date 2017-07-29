@@ -13,7 +13,7 @@ url:                //dywane.github.io
 # Jekyll
 permalink:          /:title/
 markdown:           kramdown
-highlighter:        highlightjs
+highlighter:        rouge
 kramdown:
   auto_ids:         true
   footnote_nr:      1
