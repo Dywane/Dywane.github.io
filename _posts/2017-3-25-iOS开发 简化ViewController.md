@@ -21,7 +21,7 @@ comments: false
 ### 将弱业务逻辑移到Model中
 首先是代码，以下的代码是帮助用户查找优先事项的列表：
 
-```objectivec
+```objective_c
 -(void)loadPriorities
 {
 	NSDate *now = [NSDate date];

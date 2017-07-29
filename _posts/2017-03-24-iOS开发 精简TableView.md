@@ -23,7 +23,7 @@ table view controllers可以读取table view的数据、设置tabvleView的编�
 tableViewController也可以作为child view controller添加到其他的viewController中，然后tableViewController会继续管理tableView，而parentViewController能管理其他我们关心的东西。
 
 
-<pre><code class="objective_c">
+{% highlight objective_c %}
     -(void)addDetailTableView
     {
 	    DetailViewController *detail = [DetailViewController new];
@@ -34,7 +34,7 @@ tableViewController也可以作为child view controller添加到其他的viewCon
 	    [self.view addSubview:detail.view];
 	    [detail didMoveToParentViewController:self];
     }
-</code></pre>
+{% endhighlight %}
 
 如果在使用以上代码时，需要建立child View controller 和 parent view controller之间的联系。比如，如果用户选择了一个tableView里的cell，parentViewController需要知道这件事以便能够响应点击时间。所以最好的方法是table view controller定义一个协议，同时parent view controller实现这个协议。
 
@@ -66,7 +66,7 @@ tableViewController也可以作为child view controller添加到其他的viewCon
 ### 消除ModelObeject和Cell之间的隔阂
 在很多情况下，我们需要提交我们想要在view层展示的数据，同时我们也行维持view层和model层的分离，所以tableView中的`dateSource`常常做了超额的工作：
 
-{% highlight c %}
+```objecitve_c
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Cell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -76,7 +76,7 @@ tableViewController也可以作为child view controller添加到其他的viewCon
     UIImage *photo = [UIImage imageWithName:text];
     cell.photoView.image = photo;
 }
-{% endhighlight %}
+```
 
 这样`dataSorce`会变得很杂乱，应该将这些东西分到cell的category中。
 
