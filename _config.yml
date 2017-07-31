@@ -3,7 +3,7 @@ title:              杜玮的博客
 bio:                '关心则乱，无欲则刚'
 description:        "iOS小开发仔，objective-c、Java、C"
 reading_time:       true
-words_per_minute:   200
+words_per_minute:   1
 logo:               'assets/img/logo.png'
 background:         'assets/img/placeholder-big.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
