@@ -30,9 +30,9 @@ disqus_shortname:   Dywane
 
 # Social
 # if you don't have any of social below, comment the line.
-#google:
+google:
   #plus:            #username
-  #analytics:
+  analytics:        duwei1997
   #verify:
   #ad-client:
   #ad-slot:
