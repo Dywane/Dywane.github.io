@@ -6,7 +6,7 @@ excerpt: "TableView 是iOS app 中最常用的控件，许多代码直接或者�
 tag:
 - iOS开发
 - 翻译
-comments: false
+comments: true
 ---
 
 >翻译、修改自objc.io

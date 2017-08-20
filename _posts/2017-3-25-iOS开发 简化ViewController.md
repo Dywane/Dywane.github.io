@@ -6,7 +6,7 @@ excerpt: "view controller通常是一个项目中最庞大的文件，因为它�
 tag:
 - iOS开发
 - 翻译
-comments: false
+comments: true
 ---
 
 >翻译、修改自objc.io
