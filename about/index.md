@@ -10,10 +10,9 @@ comments: false
 
 ## 参与项目
 * [优校云](https://baike.baidu.com/item/优校云/22025463?fr=aladdin) —— 家校平台沟通软件
-* [YXYNetwork](https://github.com/Dywane/YXYNetwork) —— 基于优校云设计的网络请求框架
-* Notedown —— 自主设计开发的MarkDown笔记软件（WIP）
-* Jadeware —— 玉器交易与借出软件
-* Matcha —— 一款日程管理工具（WIP）
+* [YXYNetwork](https://github.com/Dywane/YXYNetwork) —— 基于优校云设计的网络请求框架 
+* 华誉玉器 —— 玉器交易与借出软件
+* [Matcha](https://itunes.apple.com/us/app/matcha-schedule/id1310248785?mt=8) —— 一款日程管理工具
 * [Dywane.github.io](dywane.github.io) —— 我的个人网站
 * 月球上 —— 我的个人公众号，用于分享自己喜欢的港乐
 
