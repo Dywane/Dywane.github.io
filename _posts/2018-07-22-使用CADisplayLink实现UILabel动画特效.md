@@ -22,11 +22,11 @@ comments: true
 
 ![wave](https://raw.githubusercontent.com/Dywane/DWAnimatedLabel/master/Gif/wave.gif)
 
+## 初探 CADisplayLink
+
 定时对View进行定时重绘可能会第一时间想到使用`NSTimer`，但是这样的动画实现起来是**不流畅**的，因为在timer所处的`runloop`中要处理多种不同的输入，导致timer的最小周期是在50到100毫秒之间，一秒钟之内最多只能跑20次左右。
 
 但如果我们希望在屏幕上看到流畅的动画，我们就要维持60帧的刷新频率，也就意味着每一帧的间隔要在**0.016**秒左右，`NSTimer`是无法实现的。所以要用到`Core Animation`的另一个timer，`CADisplayLink`。
-
-## 初探 CADisplayLink
 
 在`CADisplayLink`的头文件中，我们可以看到它的使用方法跟`NSTimer`是十分类似的，其同样也是需要注册到RunLoop中，但不同于`NSTimer`的是，它在**屏幕需要进行重绘时**就会让RunLoop调用`CADisplayLink`指定的selector，用于准备下一帧显示的数据。而`NSTimer`是需要在**上一次RunLoop整个完成之后**才会调用制定的selector，所以在调用频率与上比`NSTimer`要频繁得多。
 
