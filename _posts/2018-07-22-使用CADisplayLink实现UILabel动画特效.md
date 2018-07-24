@@ -171,7 +171,9 @@ shapeLayer.path = wavePath()
 
 ## 结语
 
-以上就是我对`CADisplayLink`的一些运用，其实它的使用方法还有很多，可以利用它实现更多更复杂而精美的动画，同时希望各位如果有更好的改进也能与我分享
+以上就是我对`CADisplayLink`的一些运用，其实它的使用方法还有很多，可以利用它实现更多更复杂而精美的动画，同时希望各位如果有更好的改进也能与我分享。
+
+如果你喜欢这个[项目](https://github.com/Dywane/DWAnimatedLabel/tree/master)，欢迎到GitHub上给我一个star。
 
 #### 参考
 - [RQShineLabel](https://github.com/zipme/RQShineLabel)
