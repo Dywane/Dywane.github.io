@@ -2,7 +2,7 @@ layout: post
 title: "DWAnimatedLabel"
 date: 2018-08-24
 project: true
-excerpt: "A Swift based top bar HUD for iOS 9 and above, support iPhoneX"
+excerpt: "一个`UILabel`的子类，添加各类型动画"
 tag:
 - iOS开发
 - Github
