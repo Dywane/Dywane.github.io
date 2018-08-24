@@ -1,3 +1,4 @@
+---
 layout: post
 title: "DWAnimatedLabel"
 date: 2018-08-24
