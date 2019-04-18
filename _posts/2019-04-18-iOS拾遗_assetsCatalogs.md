@@ -372,6 +372,7 @@ CoreUI.framework 负责进行图片加载的准备工作，`UIImage`其实是对
 ](https://stackoverflow.com/questions/22630418/analysing-assets-car-file-in-ios)
 - [iOS-Asset-Extractor](https://github.com/Marxon13/iOS-Asset-Extractor)
 - [UIImage加载图片的方式以及Images.xcassets对于加载方法的影响](https://www.jianshu.com/p/5358f587af38)
+- [Reverse engineering the .car file format (compiled Asset Catalogs)](https://blog.timac.org/2018/1018-reverse-engineering-the-car-file-format/)
 - [How to use create and use a UIImageAsset in iOS 8](https://stackoverflow.com/questions/25716128/how-to-use-create-and-use-a-uiimageasset-in-ios-8)
 - [UIImageAsset](https://developer.apple.com/documentation/uikit/uiimageasset)
 - [Unleashing the power of asset catalogs and bundles on iOS](https://rambo.codes/ios/2018/10/03/unleashing-the-power-of-asset-catalogs-and-bundles-on-ios.html)
