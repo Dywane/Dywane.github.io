@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS拾遗—— Assets Catalogs 与 I/O 优化"
+title: "iOS 拾遗 —— Assets Catalogs 与 I/O 优化"
 date: 2019-04-18
 excerpt: "早在 XCode 5，苹果引入了 Assets Catalogs ，让开发者可以更方便的管理图片资源，相比直接存储在根目录下，Assets Catalogs 有什么自己独特的优势呢？这篇文章就是基于这样一个疑问而产生的。"
 tag:
