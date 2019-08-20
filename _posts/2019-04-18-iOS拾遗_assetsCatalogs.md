@@ -28,25 +28,25 @@ comments: true
 
 **保存在 Folder ，并使用`imageName:`获取：**
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c09efa3fc22c?w=1628&h=200&f=png&s=141049)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c09efa3fc22c.png)
 
 展开后的调用栈耗时：
  
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c0a6752d52f4?w=2056&h=530&f=png&s=457721)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c0a6752d52f4.png)
 
 **保存在 Assets Cataglogs ，并使用`imageName:`获取：**
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c0ac3efb2b40?w=1808&h=204&f=png&s=139533)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c0ac3efb2b40.png)
 
 展开后的调用栈耗时：
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c0b5049f0175?w=2040&h=434&f=png&s=367315)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c0b5049f0175.png)
 
 而如果使用`imageWithContentOfFile:`，则两种存储方式所用的耗时则相同
 
 **使用`imageWithContentOfFile:`获取：**
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c0b8760c05e9?w=1438&h=138&f=png&s=97937)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c0b8760c05e9.png)
 
 由这几个案例，我们可以推断出：
 
@@ -77,7 +77,7 @@ comments: true
 
 要知道`.car`文件究竟是什么，有什么作用，我们可以先看看它包含了什么。所以我在 Assets Catalogs 中放入了一组PNG文件：
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c0c07f222454?w=1386&h=360&f=png&s=78759)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c0c07f222454.png)
 
 随后在 XCode 中对项目进行编译，在生成的 APP 包中我们可以找到编译完成的`.car`文件。利用 [AssetCatalogTinkerer](https://github.com/insidegui/AssetCatalogTinkerer) 我们可以看到在`.car`文件中，包含了各种**图像资源**：@1x的、@2x的、@3x的。而利用 XCode 自带的 `assetutil` 则能够分析`.car`文件：
 
@@ -190,11 +190,11 @@ CoreUI.framework 位于
 
 Hopper 解析完成后会显示这样一个界面：
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c0f073cc9e4d?w=2488&h=1672&f=png&s=2718685)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c0f073cc9e4d.png)
 
 随后选择右上角的这一个按钮，就可以看到反编译出来的代码了：
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c0f9b240d7f8?w=304&h=140&f=png&s=25882)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c0f9b240d7f8.png)
 
 >在 Github 上也有其他人反编译的 CoreUI.framework 的头文件，我 [fork](https://github.com/eziochiu/iOS12.1.2-RuntimeHeaders/tree/master/PrivateFrameworks/CoreUI.framework) 了一份，不方便的同学可以先看一下头文件。
 
@@ -210,11 +210,11 @@ Hopper 解析完成后会显示这样一个界面：
 
 而在方法内部我们很容易关注到它对设备的型号做了一次判断，也对加载的图片的`name`进行了一次检查，随后获取了对应`name`的`baseKey`,然后调用下一层的方法
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c10a5fdc8e12?w=1507&h=1716&f=png&s=499314)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c10a5fdc8e12.png)
 
 而`baseKey`则是去取`renditionKey`，它首先会获取一个叫`themeStore`的东西，在调用栈中我们可以知道，如果图片存放在 Folder 中，则会生成`CUIMutableStructuredThemeStore`，随后它会根据图片的名字，获取`CUIRenditionKey`对象。
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c112eed61516?w=812&h=416&f=png&s=92563)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c112eed61516.png)
 
 而且从这里我们可以猜测到应该每一个`rendition`都有与之对应的`renditionKey`，在一张图片资源里，它们可能是**一对一**的形式，即一个`rendition`对应一个`renditionKey`。
 
@@ -228,11 +228,11 @@ Hopper 解析完成后会显示这样一个界面：
 
 这一个方法是负责完成加载图片前最后的准备工作，包括对应图像的**分辨率、放大倍数、方向、水平尺寸、垂直尺寸等参数的设置**
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c11a7c24ce0d?w=1004&h=692&f=png&s=275315)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c11a7c24ce0d.png)
 
 同时在此方法内，我们会注意到有很多地方调用`canGetRenditionWithKey:`这个方法
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c11f8f6984ba?w=1106&h=116&f=png&s=38178)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c11f8f6984ba.png)
 
 而在开始调用`canGetRenditionWithKey:`之前，会调用`renditionInfoForIdentifier:`去获取`rendition`，如果能够成功获取，则不会再进入到多次调用`canGetRenditionWithKey:`的流程中，这一点十分**重要**，因为只有在 Folder 中加载图片才不能在这步成功获取`rendition`，所以可以假设`rendition`是 Assets Catalogs 中**附带的一些属性**，在 Assets Catalogs 中能够直接获取，而在 Folder 中则是需要重复调用`canGetRenditionWithKey:`来手动获取。
 
@@ -240,28 +240,28 @@ Hopper 解析完成后会显示这样一个界面：
 
 在`canGetRenditionWithKey:`方法内部可以看到它本质上是调用了`renditionWithKey:`的方法，再判断该方法返回值是否为空：
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c127a570649d?w=912&h=196&f=png&s=64900)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c127a570649d.png)
 
 而在`renditionWithKey:`方法内，它主要做了**两件事**：
 
 1. 根据上一层传入的`[CUIRenditionKey keyList]`获取`keySignature`
 2. 根据`[CUIRenditionKey keyList]`与`keySignature`获取`rendition`
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c12c52d8bc48?w=1164&h=394&f=png&s=133735)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c12c52d8bc48.png)
 
 先看一下这个`keyList`：
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c130662ae66a?w=600&h=280&f=png&s=67955)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c130662ae66a.png)
 
 它其实是获取[自身的的属性](https://github.com/Dywane/iOS12.1.2-RuntimeHeaders/blob/master/PrivateFrameworks/CoreUI.framework/CUIRenditionKey.h)，是一个 getter 方法，拿到的值其实不是一个 List ，而是一个**结构体**：
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c1329c7c8123?w=1256&h=328&f=png&s=77607)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c1329c7c8123.png)
 
 里面包含了`identifier`与`value`。
 
 所以利用这个`keyList`，`CUIMutableStructuredThemeStore`获取到了`keySignature`，并根据它获取到了对应的`rendition`：
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c136d057e905?w=1328&h=240&f=png&s=66954)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c136d057e905.png)
 
 可以看到这个方法被加了一个线程同步锁`objc_sync_enter`，以确保它是**线程安全**的，所以它的耗时会高很多。另一方面，在获取`keySignature`的时候，还执行了一个叫做`__CUICopySortedKeySignature`的方法，这个方法是对`keySignature`进行各种位操作，也是会导致耗时的增加。
 
@@ -309,7 +309,7 @@ Hopper 解析完成后会显示这样一个界面：
 
 其里面也调用了在与上面一样的那两个`resolveXXXX`的方法，但是在耗时上并没有像在 Folder 中加载那样耗费大量时间在`canGetRenditonWithKey:`中，所以可以猜测在`renditionInfoForIdentifier:`中，**已经获取了**所需的`rendition`。所以我们来关注一下这个函数：
 
-![](https://user-gold-cdn.xitu.io/2019/4/18/16a2c13e13b38ae1?w=1134&h=1670&f=png&s=320633)
+![](https://raw.githubusercontent.com/Dywane/Dywane.github.io/master/resource/16a2c13e13b38ae1.png)
 
 略去缓存的情况不谈，这个BOM树是一个比较有意思的东西，BOM——(Bill Of Material)这是一个继承自 NeXTSTEP 的文件格式，而且是在 macOS 的各种 installer 中用来决定哪些文件要进行安装、移除或者更新，我们可以在`man 5 bom`中找到这些信息：
 
